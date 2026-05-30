@@ -82,7 +82,9 @@
                             document.getElementById("title").style.minHeight = "0vh";
 
                             document.getElementById("logo").style.display = "flex";
+                            document.getElementById("logo").offsetHeight;
                             document.getElementById("main-dn").style.display = "block";
+                            document.getElementById("main-dn").offsetHeight;
                             document.getElementById("proto").style.display = "block";
 
                             setTimeout(() => {
@@ -106,6 +108,7 @@
 
             function me() {
                 document.getElementById("mediv").style.display = "block";
+                document.getElementById("mediv").offsetHeight;
                 document.getElementById("mebtn").style.opacity = "0";
                 document.getElementById("mebtn").style.maxHeight = "0px";
 
