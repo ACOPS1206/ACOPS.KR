@@ -36,7 +36,7 @@
         <div style="display: flex; width: 100%; min-height: 100vh; align-items: center; justify-content: center; transition: opacity 0.5s ease, min-height 1s ease; flex-direction: column; margin-bottom: 0;" id="title">
             <h1 style="display: flex; text-align: center; font-family: SB; margin-bottom: 0;">
                 ACOPS
-                <a style="display: none; max-width: 0px; overflow: hidden; opacity: 0; transition: opacity 0.5s ease, max-width 0.3s ease; flex-direction: column;" id="kr">.KR</a>
+                <a style="display: none; max-width: 0px; overflow: hidden; opacity: 0; transition: opacity 0.5s ease, max-width 0.3s ease, color 0.5s ease; flex-direction: column;" id="kr">.KR</a>
             </h1>
         </div>
         <p style="margin-top: 0; display: none; opacity: 0; transition: opacity 0.5s ease;" id="proto">프로토타입</p>
@@ -83,6 +83,7 @@
                             setTimeout(() => {
                                 document.getElementById("logo").style.maxHeight = "270px";
                                 document.getElementById("proto").style.opacity = "1";
+                                document.getElementById("kr").style.color = "white";
                                 setTimeout(() => {
                                     document.getElementById("main-dn").style.maxHeight = "1000px";
                                     setTimeout(() => {
