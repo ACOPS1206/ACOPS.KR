@@ -1,48 +1,115 @@
 <!DOCTYPE html>
 <html>
+
     <head>
         <title>ACOPS.KR</title>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width= device-width, initial-scale= 1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <style>
-            @font-face{
+            @font-face {
                 font-family: "SB";
-                src: url(files/font/SBL.ttf) format(truetype);
+                src: url('files/font/SBL.ttf') format(truetype);
             }
-            a{
+
+            a {
                 color: yellow;
+                cursor: pointer;
+            }
+
+            body {
+                min-height: 100vh;
+                margin: 0;
+                background-color: black;
+                color: white;
+                text-align: center;
+                font-family: "SB", sans-serif;
             }
         </style>
     </head>
-    <body style="background-color: black; color: white; text-align: center; font-family: SB;">
-        <div style="display: flex; justify-content: center;">
-            <img src="files/logo.png" style="width: 256px;">
+
+    <body>
+
+        <div style="display: none; justify-content: center; opacity: 0; max-height: 0px; overflow: hidden; transition: opacity 1s ease, max-height 1s ease;" id="logo">
+            <img src="files/logo.png" style="width: 270px;">
         </div>
-        <h1 style="text-align: center; font-family: SB; margin-bottom: 0">ACOPS.KR</h1>
-        <p style="margin: 0;">프로토타입</p>
-        <br>
-        <p>새로운 시작입니다! | <a href="https://instagram.com/im_acops">@im_acops</a> | <a href="https://kaps.kr">KAPS.KR</a><br>admin@acops.kr</p>
-        <br>
-        <p><a onclick="me()" style="opacity: 1; max-height: 50px; transition: opacity 0.5s ease, max-height 0.5s ease; overflow: hidden; margin-bottom: 0;" id="mebtn">ACOPS.KR 에 대하여</a></p>
-        <!-- ACOPS 에 대하여 - 설명창 -->
-        <div style="display: none; opacity: 0; max-height: 0px; transition: opacity 0.5s ease, max-height 0.5s ease; overflow: hidden; margin-top: 0;" id="mediv">
-            <h3 style="margin: 0;">사이트 정보</h3>
-            <p>2026년 4월 28일<br>2학년 1학기 중간고사가 끝남을 기념하며 도메인을 구입했습니다</p>
-            <p>2026년 5월 30일<br>영재원 여가시간에 이 사이트를 만들었습니다<br>그리고 아직도 개발이 진행중입니다</p>
-            <p><a style="color: red;">이 사이트 제작에 AI 는 사용되지 않았습니다</a></p>
+
+        <div style="display: flex; width: 100%; min-height: 100vh; align-items: center; justify-content: center; transition: opacity 0.5s ease, min-height 1s ease; flex-direction: column; margin-bottom: 0;" id="title">
+            <h1 style="display: flex; text-align: center; font-family: SB; margin-bottom: 0;">
+                ACOPS
+                <a style="display: none; max-width: 0px; overflow: hidden; opacity: 0; transition: opacity 0.5s ease, max-width 0.3s ease; flex-direction: column;" id="kr">.KR</a>
+            </h1>
         </div>
+        <p style="margin-top: 0; display: none; opacity: 0; transition: opacity 0.5s ease;" id="proto">프로토타입</p>
+
+        <div style="display: none; opacity: 0; max-height: 0; overflow: hidden; transition: opacity 1s ease, max-height 1s ease;" id="main-dn">
+            <br>
+            <p>새로운 시작입니다! |
+                <a href="https://instagram.com/im_acops">@im_acops</a>
+                |
+                <a href="https://kaps.kr">KAPS.KR</a><br>admin@acops.kr</p>
+            <br>
+            <p>
+                <a onclick="me()" style="opacity: 1; max-height: 50px; transition: opacity 0.5s ease, max-height 0.5s ease; overflow: hidden; margin-bottom: 0; display: inline-block;" id="mebtn">ACOPS.KR 에 대하여</a>
+            </p>
+
+            <div style="display: none; opacity: 0; max-height: 0px; overflow: hidden; transition: opacity 1s ease, max-height 1s ease; margin-top: 0;" id="mediv">
+                <h3 style="margin: 0;">사이트 정보</h3>
+                <p>2026년 4월 28일<br>2학년 1학기 중간고사가 끝남을 기념하며 도메인을 구입했습니다</p>
+                <p>2026년 5월 30일<br>영재원 여가시간에 이 사이트를 만들었습니다<br>그리고 아직도 개발이 진행중입니다</p>
+                <p>
+                    <a style="color: red;">이 사이트 제작에 AI 는 사용되지 않았습니다</a>
+                </p>
+            </div>
+        </div>
+
         <script>
+            start();
+
+            function start() {
+                setTimeout(() => {
+                    document.getElementById("kr").style.display = "inline-block";
+
+                    setTimeout(() => {
+                        document.getElementById("kr").style.maxWidth = "100px";
+                        document.getElementById("kr").style.opacity = "1";
+
+                        setTimeout(() => {
+                            document.getElementById("title").style.minHeight = "0vh";
+
+                            document.getElementById("logo").style.display = "flex";
+                            document.getElementById("main-dn").style.display = "block";
+                            document.getElementById("proto").style.display = "block";
+
+                            setTimeout(() => {
+                                document.getElementById("logo").style.maxHeight = "270px";
+                                document.getElementById("proto").style.opacity = "1";
+                                setTimeout(() => {
+                                    document.getElementById("main-dn").style.maxHeight = "1000px";
+                                    setTimeout(() => {
+                                        document.getElementById("logo").style.opacity = "1";
+                                        document.getElementById("main-dn").style.opacity = "1";
+                                    }, 500)
+                                }, 500)
+
+                            }, 10);
+
+                        }, 1000);
+                    }, 50);
+                }, 1000);
+            }
+
             function me() {
                 document.getElementById("mediv").style.display = "block";
                 document.getElementById("mebtn").style.opacity = "0";
                 document.getElementById("mebtn").style.maxHeight = "0px";
+
                 setTimeout(() => {
                     document.getElementById("mebtn").style.display = "none";
-                    document.getElementById("mediv").style.opacity = "1";
                     document.getElementById("mediv").style.maxHeight = "500px";
-                    
-                }, 500)
+                    document.getElementById("mediv").style.opacity = "1";
+                }, 500);
             }
         </script>
     </body>
+
 </html>
