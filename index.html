@@ -63,7 +63,7 @@
             </div>
             <div style="display: flex; position: fixed; width: 100%; bottom: 0; left: 0; justify-content: center; flex-direction: column;">
                 <hr style="width: 100%;">
-                <p style="margin-top: 0;"><a href="contact.html">연락처</a> | admin@acops.kr</p>
+                <p style="margin-top: 0;"><a onclick="goto('contact.html')" style="text-decoration: underline;">연락처</a> | admin@acops.kr</p>
             </div>
         </div>
 
@@ -83,6 +83,14 @@
             start();
 
             function start() {
+                if(localStorage.getItem("redir") == "1"){
+                    document.body.style.opacity = "0";
+                    setTimeout(() => {
+                        come();
+                    }, 50);
+                } else {
+                    document.body.style.opacity = "1";
+                }
                 setTimeout(() => {
                     document.getElementById("kr").style.display = "inline-block";
 
@@ -149,11 +157,22 @@
 
             function ignore(){
                 localStorage.setItem("ignore", "true");
-                location.reload();
+                out()
+                setTimeout(() => {
+                    location.reload()
+                }, 600);
             }
 
             function deb_reset_ignore(){
                 localStorage.setItem("ignore", "false");
+            }
+
+            function goto(url){
+                out()
+                setTimeout(() => {
+                    window.location.href = url;
+                    localStorage.setItem("redir", "1");
+                }, 600);
             }
         </script>
     </body>
