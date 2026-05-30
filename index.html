@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
     <head>
         <title>ACOPS.KR</title>
         <meta charset="UTF-8">
@@ -12,7 +11,7 @@
             }
 
             a {
-                color: yellow;
+                color: rgb(255, 255, 255);
                 cursor: pointer;
             }
 
@@ -23,6 +22,8 @@
                 color: white;
                 text-align: center;
                 font-family: "SB", sans-serif;
+                display: flex;
+                flex-direction: column;
             }
         </style>
     </head>
@@ -36,7 +37,7 @@
         <div style="display: flex; width: 100%; min-height: 100vh; align-items: center; justify-content: center; transition: opacity 0.5s ease, min-height 1s ease; flex-direction: column; margin-bottom: 0;" id="title">
             <h1 style="display: flex; text-align: center; font-family: SB; margin-bottom: 0;">
                 ACOPS
-                <a style="display: none; max-width: 0px; overflow: hidden; opacity: 0; transition: opacity 0.5s ease, max-width 0.3s ease, color 0.5s ease; flex-direction: column;" id="kr">.KR</a>
+                <a style="display: none; max-width: 0px; overflow: hidden; opacity: 0; transition: opacity 0.5s ease, max-width 0.3s ease, color 0.5s ease; flex-direction: column; color: yellow;" id="kr">.KR</a>
             </h1>
         </div>
         <p style="margin-top: 0; display: none; opacity: 0; transition: opacity 0.5s ease;" id="proto">프로토타입</p>
@@ -46,10 +47,10 @@
             <p>새로운 시작입니다! |
                 <a href="https://instagram.com/dev_acops">@dev_acops</a>
                 |
-                <a href="https://kaps.kr">KAPS.KR</a><br>admin@acops.kr</p>
+                <a href="https://kaps.kr">KAPS.KR</a></p>
             <br>
             <p>
-                <a onclick="me()" style="opacity: 1; max-height: 50px; transition: opacity 0.5s ease, max-height 0.5s ease; overflow: hidden; margin-bottom: 0; display: inline-block;" id="mebtn">ACOPS.KR 에 대하여</a>
+                <a onclick="me()" style="opacity: 1; max-height: 50px; transition: opacity 0.5s ease, max-height 0.5s ease; overflow: hidden; margin-bottom: 0; display: inline-block; text-decoration: underline;" id="mebtn">ACOPS.KR 에 대하여</a>
             </p>
 
             <div style="display: none; opacity: 0; max-height: 0px; overflow: hidden; transition: opacity 1s ease, max-height 1s ease; margin-top: 0;" id="mediv">
@@ -59,6 +60,10 @@
                 <p>
                     <a style="color: red;">이 사이트 제작에 AI 는 사용되지 않았습니다</a>
                 </p>
+            </div>
+            <div style="display: flex; position: fixed; width: 100%; bottom: 0; left: 0; justify-content: center; flex-direction: column;">
+                <hr style="width: 100%;">
+                <p style="margin-top: 0;">admin@acops.kr</p>
             </div>
         </div>
 
