@@ -28,7 +28,7 @@
         </style>
     </head>
 
-    <body>
+    <body style="opacity: 1; transition: opacity 0.5s ease;">
 
         <div style="display: none; justify-content: center; opacity: 0; max-height: 0px; overflow: hidden; transition: opacity 1s ease, max-height 1s ease;" id="logo">
             <img src="files/logo.png" style="width: 270px;">
@@ -117,6 +117,14 @@
                     document.getElementById("mediv").style.maxHeight = "500px";
                     document.getElementById("mediv").style.opacity = "1";
                 }, 500);
+            }
+
+            function out() {
+                document.body.style.opacity = "0";
+            }
+
+            function come() {
+                document.body.style.opacity = "1";
             }
         </script>
     </body>
