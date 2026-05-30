@@ -40,30 +40,17 @@
                 <a style="display: none; max-width: 0px; overflow: hidden; opacity: 0; transition: opacity 0.5s ease, max-width 0.3s ease, color 0.5s ease; flex-direction: column; color: yellow;" id="kr">.KR</a>
             </h1>
         </div>
-        <p style="margin-top: 0; display: none; opacity: 0; transition: opacity 0.5s ease;" id="proto">프로토타입</p>
+        <p style="margin-top: 0; display: none; opacity: 0; transition: opacity 0.5s ease;" id="proto">연락처</p>
 
         <div style="display: none; opacity: 0; max-height: 0; overflow: hidden; transition: opacity 1s ease, max-height 1s ease;" id="main-dn">
             <br>
-            <p>새로운 시작입니다! |
-                <a href="https://instagram.com/dev_acops">@dev_acops</a>
-                |
-                <a href="https://kaps.kr">KAPS.KR</a></p>
-            <br>
-            <p>
-                <a onclick="me()" style="opacity: 1; max-height: 50px; transition: opacity 0.5s ease, max-height 0.5s ease; overflow: hidden; margin-bottom: 0; display: inline-block; text-decoration: underline;" id="mebtn">ACOPS.KR 에 대하여</a>
-            </p>
-
-            <div style="display: none; opacity: 0; max-height: 0px; overflow: hidden; transition: opacity 1s ease, max-height 1s ease; margin-top: 0;" id="mediv">
-                <h3 style="margin: 0;">사이트 정보</h3>
-                <p>2026년 4월 28일<br>2학년 1학기 중간고사가 끝남을 기념하며 도메인을 구입했습니다</p>
-                <p>2026년 5월 30일<br>영재원 여가시간에 이 사이트를 만들었습니다<br>그리고 아직도 개발이 진행중입니다</p>
-                <p>
-                    <a style="color: red;">이 사이트 제작에 AI 는 사용되지 않았습니다</a>
-                </p>
-            </div>
+            <!-- 내용 -->
+            <p>일반 연락처<br>010-8143-1580<br>@dev_acops<br>@im_acops<br>admin@acops.kr</p>
+            <p>비상 연락처<br>aecopse12@gmail.com<br>acops@kaps.kr</p>
+                <!-- 하단 바 -->
             <div style="display: flex; position: fixed; width: 100%; bottom: 0; left: 0; justify-content: center; flex-direction: column;">
                 <hr style="width: 100%;">
-                <p style="margin-top: 0;"><a href="contact.html">연락처</a> | admin@acops.kr</p>
+                <p style="margin-top: 0;"><a href="index.html">홈페이지</p>
             </div>
         </div>
 
@@ -71,13 +58,9 @@
             start();
 
             function start() {
-                setTimeout(() => {
-                    document.getElementById("kr").style.display = "inline-block";
-
-                    setTimeout(() => {
-                        document.getElementById("kr").style.maxWidth = "100px";
-                        document.getElementById("kr").style.opacity = "1";
-
+                            document.getElementById("kr").style.display = "block";
+                            document.getElementById("kr").style.opacity = "1";
+                            document.getElementById("kr").style.maxWidth = "100px";
                         setTimeout(() => {
                             document.getElementById("title").style.minHeight = "0vh";
 
@@ -102,9 +85,7 @@
                             }, 10);
 
                         }, 1000);
-                    }, 50);
-                }, 1000);
-            }
+                    }
 
             function me() {
                 document.getElementById("mediv").style.display = "block";
