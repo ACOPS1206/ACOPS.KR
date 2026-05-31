@@ -108,6 +108,7 @@ if (ign != "true") {
         start();
 
         function start() {
+            document.getElementById("kr").style.color = "yellow";
             if (localStorage.getItem("redir") == "1") {
                 document.body.style.opacity = "0";
                 setTimeout(() => {
@@ -232,36 +233,39 @@ if (ign != "true") {
                 }, 1000);
             }, 1000);
         }
-        //이 부분은 AI의 도움을 받았어요
+        // 이 부분은 AI의 도움을 받았어요 (수정된 버전)
 
-        let yellowlink_value = 0;
+let yellowlink_value = 0;
 
-        function applyLinkColor() {
-            const atag = document.querySelectorAll("a");
-            if (localStorage.getItem("yellowlink") === "true") {
-                atag.forEach(a => {
-                    a.style.color = "yellow";
-                });
-                yellowlink_value = 1;
-            } else {
-                atag.forEach(a => {
-                    a.style.color = "white";
-                });
-                yellowlink_value = 0;
-            }
+function applyLinkColor() {
+    // querySelectorAll("a") 대신 :not(#kr)을 붙여 #kr은 제외합니다.
+    const atag = document.querySelectorAll("a:not(#kr)"); 
+    setTimeout(() => {
+        if (localStorage.getItem("yellowlink") === "true") {
+            atag.forEach(a => {
+                a.style.color = "yellow";
+            });
+            yellowlink_value = 1;
+        } else {
+            atag.forEach(a => {
+                a.style.color = "white";
+            });
+            yellowlink_value = 0;
         }
+    }, 500);
+}
 
-        applyLinkColor();
+applyLinkColor();
 
-        function yellowlink() {
-            if (localStorage.getItem("yellowlink") === "true") {
-                localStorage.setItem("yellowlink", "false");
-            } else {
-                localStorage.setItem("yellowlink", "true");
-            }
-            applyLinkColor();
-        }
-        //여기까지
+function yellowlink() {
+    if (localStorage.getItem("yellowlink") === "true") {
+        localStorage.setItem("yellowlink", "false");
+    } else {
+        localStorage.setItem("yellowlink", "true");
+    }
+    applyLinkColor();
+}
+// 여기까지
 
         function downanimation() {
             if (localStorage.getItem("downanimation") == "1") {
