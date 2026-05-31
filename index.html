@@ -34,7 +34,7 @@
 
     <div style="display: block; text-align: center; opacity: 0; max-height: 0px; overflow: hidden; transition: opacity 1s ease, max-height 1s ease;"
         id="logo">
-        <img src="files/logo_padding.png" style="width: 270px;">
+        <img src="files/logo_padding.png" style="width: 270px; height: auto;">
     </div>
 
     <div style="display: flex; width: 100%; min-height: 100vh; align-items: center; justify-content: center; transition: opacity 1s ease, min-height 1s ease; flex-direction: column; margin-bottom: 0; opacity: 0;"
@@ -184,7 +184,7 @@
                 ign = localStorage.getItem("ignore");
                 if (ign == "false") {
                     //document.getElementById("main-dn").innerHTML = "<h2 style='color:red'>경고</h2><p style='font-size: 15px'>현재 Apple 기기를 사용하고 계신 듯 합니다.<br>이 기기에서는 이 사이트가 제대로 작동하지 않습니다.<br><b>다른 기기를 사용하세요!</b></p><p><a onclick='ignore()' style='text-decoration: underline; cursor: pointer'>무시하고 방문하기</a></p>";
-                    document.getElementById("info").innerHTML = "Apple 기기입니다";
+                    document.getElementById("info").innerHTML = "Apple 기기 환경 | 최적화되지 않음";
                     document.getElementById("dbartxt").style.marginBottom = "0";
                 }
             }
