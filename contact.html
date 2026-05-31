@@ -32,7 +32,7 @@
 
 <body style="opacity: 1; transition: opacity 0.5s ease;">
 
-    <div style="display: none; justify-content: center; opacity: 0; max-height: 0px; overflow: hidden; transition: opacity 1s ease, max-height 1s ease;"
+    <div style="display: block; text-align: center; opacity: 0; max-height: 0px; overflow: hidden; transition: opacity 1s ease, max-height 1s ease;"
         id="logo">
         <img src="files/logo_padding.png" style="width: 270px;">
     </div>
@@ -79,11 +79,11 @@
                 document.getElementById("title").style.minHeight = "0vh";
 
 
-                document.getElementById("logo").style.display = "flex";
-                document.getElementById("logo").offsetHeight;
-                document.getElementById("main-dn").style.display = "block";
-                document.getElementById("main-dn").offsetHeight;
-                document.getElementById("proto").style.display = "block";
+                document.getElementById("logo").style.display = "block";
+                const dummy1 = document.getElementById("logo").offsetHeight;
+                        document.getElementById("main-dn").style.display = "block";
+                        const dummy2 = document.getElementById("main-dn").offsetHeight;;
+                        document.getElementById("proto").style.display = "block";
 
                 setTimeout(() => {
                     document.getElementById("logo").style.maxHeight = "270px";
@@ -97,7 +97,7 @@
                         }, 500)
                     }, 500)
 
-                }, 10);
+                }, 50);
 
             }, 1000);
         }
