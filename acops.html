@@ -61,7 +61,6 @@
     </div>
 
     <script>
-    let wait = 1000;
     localStorage.setItem("downanimation", 0);
 
     initACOPS();
@@ -77,16 +76,12 @@
         krElement.style.maxWidth = "100px";
 
         if (acopsStatus == "goto") {
-            localStorage.setItem("acops", "none");
-            
             bodyElement.style.transition = "none";
             titleElement.style.transition = "none";
             krElement.style.transition = "none";
 
             titleElement.style.opacity = "1";
             krElement.style.opacity = "1";
-
-            wait = 0;
 
             setTimeout(() => {
                 bodyElement.style.transition = "opacity 0.5s ease";
@@ -105,6 +100,7 @@
 
     window.addEventListener('load', function() {
         
+        // 느린 네트워크에서 폰트가 다 로드된 후, 유저가 .KR을 인지할 수 있도록 1초(1000ms) 무조건 대기
         setTimeout(() => {
             document.getElementById("kr").style.maxWidth = "0px";
             document.getElementById("kr").style.opacity = "0";
@@ -133,7 +129,7 @@
 
             }, 1000);
 
-        }, wait);
+        }, 1000); 
     });
 
     function me() {
@@ -217,6 +213,7 @@
     }
     // 여기까지
 </script>
+
 
 </body>
 
