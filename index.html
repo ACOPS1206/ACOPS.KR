@@ -78,13 +78,14 @@
                 <a style="color: red; text-decoration: underline;">이 사이트 제작에 AI 는 사용되지 않았습니다</a>
             </p>
         </div>
-        <div style="display: flex; position: fixed; width: 100%; bottom: 0; left: 0; justify-content: center; flex-direction: column; background-color: black; transition: max-height 0.5s ease; max-height: 50px; overflow: hidden;"
-            id="dbar">
-            <hr style="width: 100%;">
+        <div style="display: flex; position: fixed; width: 100%; bottom: 0; left: 0; justify-content: center; flex-direction: column; background-color: black;">
+            <div style="transition: max-height 0.5s ease; max-height: 50px; overflow: hidden;" id="dbar">
+                <hr style="width: 100%;">
             <p style="margin-top: 0;"><a onclick="goto('contact.html')" style="text-decoration: underline;">연락처 정보</a> |
                 <a style="font-size: 20px; text-decoration: underline;" onclick="acops()">에이콥스</a> | <a
                     href="https://kaps.kr">이전 사이트</a>
             </p>
+            </div>
         </div>
     </div>
 
@@ -172,6 +173,7 @@ if (ign != "true") {
         }
 
         function me() {
+            document.getElementById("dbar").style.maxHeight = "0px";
             document.getElementById("mediv").style.display = "block";
             document.getElementById("mediv").offsetHeight;
             document.getElementById("mebtn").style.opacity = "0";
@@ -230,26 +232,32 @@ if (ign != "true") {
                 }, 1000);
             }, 1000);
         }
-        // 이 부분은 AI의 도움을 받았어요 (수정된 버전)
+// 이 부분은 AI의 도움을 받았어요 (수정된 버전)
 
 let yellowlink_value = 0;
 
 function applyLinkColor() {
-    // querySelectorAll("a") 대신 :not(#kr)을 붙여 #kr은 제외합니다.
+    // #kr을 제외한 모든 a 태그를 가져옵니다.
     const atag = document.querySelectorAll("a:not(#kr)"); 
+    
     setTimeout(() => {
-        if (localStorage.getItem("yellowlink") === "true") {
-            atag.forEach(a => {
+        const isYellow = localStorage.getItem("yellowlink") === "true";
+        
+        atag.forEach(a => {
+            // 부모 중에 id가 "mediv"인 요소가 있다면 색상 변경을 건너跳(skip)합니다.
+            if (a.closest("#mediv")) {
+                return; 
+            }
+
+            if (isYellow) {
                 a.style.color = "yellow";
-            });
-            yellowlink_value = 1;
-        } else {
-            atag.forEach(a => {
+            } else {
                 a.style.color = "white";
-            });
-            yellowlink_value = 0;
-        }
-    }, );
+            }
+        });
+        
+        yellowlink_value = isYellow ? 1 : 0;
+    });
 }
 
 applyLinkColor();
