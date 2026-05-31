@@ -59,11 +59,13 @@
 
             document.getElementById("kr").style.maxWidth = "100px";
             function start() {
-                            
-                            
-                            document.getElementById("kr").style.opacity = "1";
+                            setTimeout(() => {
+                                document.getElementById("kr").style.opacity = "1";
                             
                             document.getElementById("title").style.opacity = "1";
+                            }, 50);
+                            
+                            
                         setTimeout(() => {
                             document.getElementById("title").style.minHeight = "0vh";
                             
