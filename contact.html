@@ -47,7 +47,7 @@
             <p>일반 연락처<br>010-8143-1580<br>@dev_acops<br>@im_acops<br>admin@acops.kr</p>
             <p>비상 연락처<br>aecopse12@gmail.com<br>acops@kaps.kr</p>
                 <!-- 하단 바 -->
-            <div style="display: flex; position: fixed; width: 100%; bottom: 0; left: 0; justify-content: center; flex-direction: column; background-color: black">
+            <div style="display: flex; position: fixed; width: 100%; bottom: 0; left: 0; justify-content: center; flex-direction: column; background-color: black; transition: max-height 0.5s ease; max-height: 50px; overflow: hidden;" id="dbar"">
                 <hr style="width: 100%;">
                 <p style="margin-top: 0;"><a onclick="goto('index.html')" style="text-decoration: underline;">홈페이지</p>
             </div>
@@ -128,7 +128,8 @@
             }
 
             function goto(url){
-                out()
+                out();
+                document.getElementById("dbar").style.maxHeight = "0px";
                 setTimeout(() => {
                     window.location.href = url;
                     localStorage.setItem("redir", "1");
