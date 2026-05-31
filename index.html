@@ -119,7 +119,9 @@ if (ign != "true") {
                 document.body.style.opacity = "1";
             }
             if (localStorage.getItem("acops") == "backto") {
-                document.getElementById("title").style.opacity = "1";
+                setTimeout(() => {
+                    document.getElementById("title").style.opacity = "1";
+                }, 50)
                 wait = 0;
             } else {
                 setTimeout(() => {
