@@ -56,10 +56,16 @@
             <a href="https://kaps.kr">KAPS.KR</a>
         </p>
         <br>
+        //내용
         <p>
             <a onclick="me()"
                 style="opacity: 1; max-height: 50px; transition: opacity 0.5s ease, max-height 0.5s ease; overflow: hidden; margin-bottom: 0; display: inline-block; text-decoration: underline;"
                 id="mebtn">ACOPS.KR 에 대하여</a>
+        </p>
+        <p>
+            <a onclick="goto('settings.html')" style="text-decoration: underline;">
+                설정
+            </a>
         </p>
 
         <div style="display: none; opacity: 0; max-height: 0px; overflow: hidden; transition: opacity 1s ease, max-height 1s ease; margin-top: 0;"
@@ -76,17 +82,21 @@
             <hr style="width: 100%;">
             <p style="margin-top: 0;"><a onclick="goto('contact.html')" style="text-decoration: underline;">연락처 정보</a> |
                 <a style="font-size: 20px; text-decoration: underline;" onclick="acops()">에이콥스</a> | <a
-                    href="https://kaps.kr">이전 사이트</a></p>
+                    href="https://kaps.kr">이전 사이트</a>
+            </p>
         </div>
     </div>
 
     <script>
-        localStorage.setItem("downanimation", 0);
-        let wait = 1000;
-        let ign = localStorage.getItem("ignore");
-        if (ign != "true") {
-            localStorage.setItem("ignore", "false");
-        }
+        if (localStorage.getItem("downanimation") === null) {
+    localStorage.setItem("downanimation", "0");
+}
+
+let wait = 1000;
+let ign = localStorage.getItem("ignore");
+if (ign != "true") {
+    localStorage.setItem("ignore", "false");
+}
 
         //이 부분은 AI 를 썼어요..
         const isAppleWebkit = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
@@ -194,7 +204,7 @@
 
         function goto(url) {
             out();
-            if (localStorage.getItem("downanimation") == 1) {
+            if (localStorage.getItem("downanimation") == "1") {
                 document.getElementById("dbar").style.maxHeight = "0px";
             }
             setTimeout(() => {
@@ -251,6 +261,14 @@
             applyLinkColor();
         }
         //여기까지
+
+        function downanimation() {
+            if (localStorage.getItem("downanimation") == "1") {
+                localStorage.setItem("downanimation", "0");
+            } else {
+                localStorage.setItem("downanimation", "1");
+            }
+        } //폐기, 하지만 만일을 대비해 코드는 남겨둠
     </script>
 </body>
 
