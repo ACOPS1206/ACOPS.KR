@@ -136,9 +136,6 @@
 
         function goto(url) {
             out();
-            if (localStorage.getItem("downanimation") == 1) {
-                document.getElementById("dbar").style.maxHeight = "0px";
-            }
             setTimeout(() => {
                 window.location.href = url;
                 localStorage.setItem("redir", "1");

@@ -206,9 +206,7 @@ if (ign != "true") {
 
         function goto(url) {
             out();
-            if (localStorage.getItem("downanimation") == "1") {
-                document.getElementById("dbar").style.maxHeight = "0px";
-            }
+
             setTimeout(() => {
                 window.location.href = url;
                 localStorage.setItem("redir", "1");
@@ -217,7 +215,6 @@ if (ign != "true") {
         }
 
         function acops() {
-            document.getElementById("dbar").style.maxHeight = "0px";
             document.getElementById("main-dn").style.opacity = "0";
             document.getElementById("kr").style.color = "white";
             document.getElementById("logo").style.opacity = "0";
