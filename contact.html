@@ -55,15 +55,19 @@
 
         <script>
             start();
+            document.getElementById("kr").style.display = "block";
 
+            document.getElementById("kr").style.maxWidth = "100px";
             function start() {
-                            document.getElementById("kr").style.display = "block";
-
-                            document.getElementById("kr").style.maxWidth = "100px";
+                            
+                            
+                            document.getElementById("kr").style.opacity = "1";
+                            
+                            document.getElementById("title").style.opacity = "1";
                         setTimeout(() => {
                             document.getElementById("title").style.minHeight = "0vh";
-                            document.getElementById("kr").style.opacity = "1";
-                            document.getElementById("title").style.opacity = "1";
+                            
+                            
                             document.getElementById("logo").style.display = "flex";
                             document.getElementById("logo").offsetHeight;
                             document.getElementById("main-dn").style.display = "block";
