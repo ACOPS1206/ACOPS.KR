@@ -128,6 +128,7 @@
                                         document.getElementById("main-dn").style.opacity = "1";
                                         localStorage.setItem("ignore", "false");
                                         localStorage.setItem("acops", "none");
+                                        document.getElementById("dbar").style.maxHeight = "50px";
                                     }, 500)
                                 }, 500)
 
@@ -189,6 +190,7 @@
             }
 
             function acops(){
+                document.getElementById("dbar").style.maxHeight = "0px";
                 document.getElementById("main-dn").style.opacity = "0";
                 document.getElementById("kr").style.color = "white";
                 document.getElementById("logo").style.opacity = "0";
