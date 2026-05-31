@@ -149,9 +149,9 @@ if (ign != "true") {
                         document.getElementById("title").style.minHeight = "0vh";
 
                         document.getElementById("logo").style.display = "flex";
-                        document.getElementById("logo").offsetHeight;
+                        const dummy1 = document.getElementById("logo").offsetHeight;
                         document.getElementById("main-dn").style.display = "block";
-                        document.getElementById("main-dn").offsetHeight;
+                        const dummy2 = document.getElementById("main-dn").offsetHeight;;
                         document.getElementById("proto").style.display = "block";
 
                         setTimeout(() => {
@@ -169,7 +169,7 @@ if (ign != "true") {
                                 }, 500)
                             }, 500)
 
-                        }, 10);
+                        }, 50);
 
                     }, 1000);
                 }, 50);
