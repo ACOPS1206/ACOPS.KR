@@ -83,7 +83,7 @@
             style="display: flex; position: fixed; width: 100%; bottom: 0; left: 0; justify-content: center; flex-direction: column; background-color: black;">
             <div style="transition: max-height 0.5s ease; max-height: 80px; overflow: hidden;" id="dbar">
                 <hr style="width: 100%;">
-                <p style="margin: 0;"><a onclick="goto('contact.html')" style="text-decoration: underline;">연락처
+                <p style="margin-top: 0;" id="dbartxt"><a onclick="goto('contact.html')" style="text-decoration: underline;">연락처
                         정보</a> |
                     <a style="font-size: 20px; text-decoration: underline;" onclick="acops()">에이콥스</a> | <a
                         href="https://kaps.kr">이전 사이트</a>
@@ -153,7 +153,6 @@
 
                     setTimeout(() => {
                         document.getElementById("title").style.minHeight = "0vh";
-
                         document.getElementById("logo").style.display = "block";
                         const dummy1 = document.getElementById("logo").offsetHeight;
                         document.getElementById("main-dn").style.display = "block";
@@ -186,6 +185,7 @@
                 if (ign == "false") {
                     //document.getElementById("main-dn").innerHTML = "<h2 style='color:red'>경고</h2><p style='font-size: 15px'>현재 Apple 기기를 사용하고 계신 듯 합니다.<br>이 기기에서는 이 사이트가 제대로 작동하지 않습니다.<br><b>다른 기기를 사용하세요!</b></p><p><a onclick='ignore()' style='text-decoration: underline; cursor: pointer'>무시하고 방문하기</a></p>";
                     document.getElementById("info").innerHTML = "Apple 기기입니다";
+                    document.getElementById("dbartxt").style.marginBottom = "0";
                 }
             }
         }
