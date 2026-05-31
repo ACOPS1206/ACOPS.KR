@@ -110,18 +110,29 @@ if (ign != "true") {
 
         function start() {
             document.getElementById("kr").style.color = "yellow";
-            if (localStorage.getItem("redir") == "1") {
-                document.body.style.opacity = "0";
-                setTimeout(() => {
-                    come();
-                }, 50);
-            } else {
+            
+            if (localStorage.getItem("acops") === "backto") {
+                document.body.style.transition = "none";
+                document.getElementById("title").style.transition = "none";
+
                 document.body.style.opacity = "1";
-            }
-            if (localStorage.getItem("acops") == "backto") {
                 document.getElementById("title").style.opacity = "1";
+                
                 wait = 0;
+                setTimeout(() => {
+                    document.body.style.transition = "opacity 0.5s ease";
+                    document.getElementById("title").style.transition = "opacity 0.5s ease, min-height 1s ease";
+                }, 50);
+
             } else {
+                if (localStorage.getItem("redir") == "1") {
+                    setTimeout(() => {
+                        come();
+                    }, 50);
+                } else {
+                    document.body.style.opacity = "1";
+                }
+                
                 setTimeout(() => {
                     document.getElementById("title").style.opacity = "1";
                 }, 50);
