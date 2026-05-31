@@ -165,12 +165,16 @@ function applyLinkColor() {
 applyLinkColor();
 
 function yellowlink() {
-    if (localStorage.getItem("yellowlink") === "true") {
+    out();
+    setTimeout(() => {
+        applyLinkColor();
+        if (localStorage.getItem("yellowlink") === "true") {
         localStorage.setItem("yellowlink", "false");
     } else {
         localStorage.setItem("yellowlink", "true");
     }
-    applyLinkColor();
+        come();
+    }, 1000);
 }
 // 여기까지
     </script>
