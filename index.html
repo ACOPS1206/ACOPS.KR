@@ -113,10 +113,7 @@
         //여기까지
 
         start();
-
-        function start() {
-            document.getElementById("kr").style.color = "yellow";
-
+        window.addEventListener('load', function() {
             if (localStorage.getItem("acops") === "backto") {
                 document.body.style.transition = "none";
                 document.getElementById("title").style.transition = "none";
@@ -143,6 +140,12 @@
                     document.getElementById("title").style.opacity = "1";
                 }, 50);
             }
+    start(); 
+});
+        function start() {
+            document.getElementById("kr").style.color = "yellow";
+
+            
 
             setTimeout(() => {
                 document.getElementById("kr").style.display = "inline-block";
