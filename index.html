@@ -69,6 +69,7 @@
         </div>
 
         <script>
+            localStorage.setItem("downanimation",0);
             let wait = 1000;
             let ign = localStorage.getItem("ignore");
             if(ign != "true"){
@@ -181,7 +182,9 @@
 
             function goto(url){
                 out();
-                document.getElementById("dbar").style.maxHeight = "0px";
+                if(localStorage.getItem("downanimation") == 1){
+                    document.getElementById("dbar").style.maxHeight = "0px";
+                }
                 setTimeout(() => {
                     window.location.href = url;
                     localStorage.setItem("redir", "1");

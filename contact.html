@@ -54,6 +54,7 @@
         </div>
 
         <script>
+            localStorage.setItem("downanimation",0);
             document.getElementById("kr").style.color = "yellow";
             start();
             document.getElementById("kr").style.display = "block";
@@ -129,7 +130,9 @@
 
             function goto(url){
                 out();
-                document.getElementById("dbar").style.maxHeight = "0px";
+                if(localStorage.getItem("downanimation") == 1){
+                    document.getElementById("dbar").style.maxHeight = "0px";
+                }
                 setTimeout(() => {
                     window.location.href = url;
                     localStorage.setItem("redir", "1");
