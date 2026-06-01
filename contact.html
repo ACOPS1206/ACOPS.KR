@@ -61,122 +61,146 @@
     </div>
 
     <script>
-        localStorage.setItem("downanimation", 0);
-        document.getElementById("kr").style.color = "yellow";
-        start();
-        document.getElementById("kr").style.display = "block";
+    localStorage.setItem("downanimation", 0);
 
-        document.getElementById("kr").style.maxWidth = "100px";
-        function start() {
+    initACOPS();
+
+    function initACOPS() {
+        const acopsStatus = localStorage.getItem("acops");
+        const titleElement = document.getElementById("title");
+        const krElement = document.getElementById("kr");
+        const bodyElement = document.body;
+
+        krElement.style.color = "yellow";
+        krElement.style.display = "block";
+        krElement.style.maxWidth = "100px";
+
+        if (acopsStatus === "backto") {
+            bodyElement.style.transition = "none";
+            titleElement.style.transition = "none";
+            krElement.style.transition = "none";
+
+            bodyElement.style.opacity = "1";
+            titleElement.style.opacity = "1";
+            krElement.style.opacity = "1";
+
             setTimeout(() => {
-                document.getElementById("kr").style.opacity = "1";
+                bodyElement.style.transition = "opacity 0.5s ease";
+                titleElement.style.transition = "opacity 1s ease, min-height 1s ease";
+                krElement.style.transition = "opacity 0.5s ease, max-width 0.3s ease, color 0.5s ease";
+            }, 50);
+        } else {
+            titleElement.style.transition = "opacity 2s ease, min-height 1s ease";
+            setTimeout(() => {
+                krElement.style.opacity = "1";
+                titleElement.style.opacity = "1";
+            }, 50);
+        }
+    }
 
-                document.getElementById("title").style.opacity = "1";
+    window.addEventListener('load', function() {
+        setTimeout(() => {
+            document.getElementById("title").style.minHeight = "0vh";
+
+            document.getElementById("logo").style.display = "block";
+            const dummy1 = document.getElementById("logo").offsetHeight;
+            document.getElementById("main-dn").style.display = "block";
+            const dummy2 = document.getElementById("main-dn").offsetHeight;
+            document.getElementById("proto").style.display = "block";
+
+            setTimeout(() => {
+                document.getElementById("logo").style.maxHeight = "270px";
+                document.getElementById("proto").style.opacity = "1";
+                document.getElementById("kr").style.color = "white";
+                
+                setTimeout(() => {
+                    document.getElementById("main-dn").style.maxHeight = "1000px";
+                    
+                    setTimeout(() => {
+                        document.getElementById("logo").style.opacity = "1";
+                        document.getElementById("main-dn").style.opacity = "1";
+                    }, 500)
+                }, 500)
+
             }, 50);
 
+        }, 1000);
+    });
 
-            setTimeout(() => {
-                document.getElementById("title").style.minHeight = "0vh";
+    function me() {
+        document.getElementById("mediv").style.display = "block";
+        document.getElementById("mediv").offsetHeight;
+        document.getElementById("mebtn").style.opacity = "0";
+        document.getElementById("mebtn").style.maxHeight = "0px";
 
-
-                document.getElementById("logo").style.display = "block";
-                const dummy1 = document.getElementById("logo").offsetHeight;
-                        document.getElementById("main-dn").style.display = "block";
-                        const dummy2 = document.getElementById("main-dn").offsetHeight;;
-                        document.getElementById("proto").style.display = "block";
-
-                setTimeout(() => {
-                    document.getElementById("logo").style.maxHeight = "270px";
-                    document.getElementById("proto").style.opacity = "1";
-                    document.getElementById("kr").style.color = "white";
-                    setTimeout(() => {
-                        document.getElementById("main-dn").style.maxHeight = "1000px";
-                        setTimeout(() => {
-                            document.getElementById("logo").style.opacity = "1";
-                            document.getElementById("main-dn").style.opacity = "1";
-                        }, 500)
-                    }, 500)
-
-                }, 50);
-
-            }, 1000);
-        }
-
-        function me() {
-            document.getElementById("mediv").style.display = "block";
-            document.getElementById("mediv").offsetHeight;
-            document.getElementById("mebtn").style.opacity = "0";
-            document.getElementById("mebtn").style.maxHeight = "0px";
-
-            setTimeout(() => {
-                document.getElementById("mebtn").style.display = "none";
-                document.getElementById("mediv").style.maxHeight = "500px";
-                document.getElementById("mediv").style.opacity = "1";
-            }, 500);
-        }
-
-        function out() {
-            document.body.style.opacity = "0";
-        }
-
-        function come() {
-            document.body.style.opacity = "1";
-        }
-
-        function ignore() {
-            localStorage.setItem("ignore", "true");
-            out()
-            setTimeout(() => {
-                location.reload()
-            }, 600);
-        }
-
-        function deb_reset_ignore() {
-            localStorage.setItem("ignore", "false");
-        }
-
-        function goto(url) {
-            out();
-            setTimeout(() => {
-                window.location.href = url;
-                localStorage.setItem("redir", "1");
-            }, 600);
-        }
-
-        // 이 부분은 AI의 도움을 받았어요 (수정된 버전)
-
-let yellowlink_value = 0;
-
-function applyLinkColor() {
-    // querySelectorAll("a") 대신 :not(#kr)을 붙여 #kr은 제외합니다.
-    const atag = document.querySelectorAll("a:not(#kr)"); 
-    setTimeout(() => {
-        if (localStorage.getItem("yellowlink") === "true") {
-            atag.forEach(a => {
-                a.style.color = "yellow";
-            });
-            yellowlink_value = 1;
-        } else {
-            atag.forEach(a => {
-                a.style.color = "white";
-            });
-            yellowlink_value = 0;
-        }
-    }, );
-}
-
-applyLinkColor();
-
-function yellowlink() {
-    if (localStorage.getItem("yellowlink") === "true") {
-        localStorage.setItem("yellowlink", "false");
-    } else {
-        localStorage.setItem("yellowlink", "true");
+        setTimeout(() => {
+            document.getElementById("mebtn").style.display = "none";
+            document.getElementById("mediv").style.maxHeight = "500px";
+            document.getElementById("mediv").style.opacity = "1";
+        }, 500);
     }
+
+    function out() {
+        document.body.style.opacity = "0";
+    }
+
+    function come() {
+        document.body.style.opacity = "1";
+    }
+
+    function ignore() {
+        localStorage.setItem("ignore", "true");
+        out()
+        setTimeout(() => {
+            location.reload()
+        }, 600);
+    }
+
+    function deb_reset_ignore() {
+        localStorage.setItem("ignore", "false");
+    }
+
+    function goto(url) {
+        out();
+        setTimeout(() => {
+            window.location.href = url;
+            localStorage.setItem("redir", "1");
+        }, 600);
+    }
+
+    // 이 부분은 AI의 도움을 받았어요 (수정된 버전)
+
+    let yellowlink_value = 0;
+
+    function applyLinkColor() {
+        const atag = document.querySelectorAll("a:not(#kr)"); 
+        setTimeout(() => {
+            if (localStorage.getItem("yellowlink") === "true") {
+                atag.forEach(a => {
+                    a.style.color = "yellow";
+                });
+                yellowlink_value = 1;
+            } else {
+                atag.forEach(a => {
+                    a.style.color = "white";
+                });
+                yellowlink_value = 0;
+            }
+        }, );
+    }
+
     applyLinkColor();
-}
-// 여기까지
-    </script>
+
+    function yellowlink() {
+        if (localStorage.getItem("yellowlink") === "true") {
+            localStorage.setItem("yellowlink", "false");
+        } else {
+            localStorage.setItem("yellowlink", "true");
+        }
+        applyLinkColor();
+    }
+    // 여기까지
+</script>
 </body>
 
 </html>
