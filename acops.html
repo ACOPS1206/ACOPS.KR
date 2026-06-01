@@ -77,6 +77,7 @@
         krElement.style.maxWidth = "100px";
 
         if (acopsStatus == "goto") {
+            wait = 0;
             bodyElement.style.transition = "none";
             titleElement.style.transition = "none";
             krElement.style.transition = "opacity 0.5s ease, max-width 0.5s ease";
@@ -88,7 +89,6 @@
                 bodyElement.style.transition = "opacity 0.5s ease";
                 titleElement.style.transition = "opacity 1s ease, min-height 1s ease";
                 krElement.style.transition = "opacity 0.5s ease, max-width 0.5s ease, color 0.5s ease";
-                wait = 0;
             }, 50);
             
         } else {
