@@ -62,10 +62,12 @@
 
     <script>
     localStorage.setItem("downanimation", 0);
+    let wait = 1000;
 
     initACOPS();
 
     function initACOPS() {
+        wait = 0;
         const acopsStatus = localStorage.getItem("acops");
         const titleElement = document.getElementById("title");
         const krElement = document.getElementById("kr");
@@ -100,7 +102,7 @@
 
     window.addEventListener('load', function() {
         
-        // 느린 네트워크에서 폰트가 다 로드된 후, 유저가 .KR을 인지할 수 있도록 1초(1000ms) 무조건 대기
+        
         setTimeout(() => {
             document.getElementById("kr").style.maxWidth = "0px";
             document.getElementById("kr").style.opacity = "0";
@@ -129,7 +131,7 @@
 
             }, 1000);
 
-        }, 1000); 
+        }, wait); 
     });
 
     function me() {
