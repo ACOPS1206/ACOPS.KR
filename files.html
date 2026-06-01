@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ACOPS.KR</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @font-face {
+            font-family: "SB";
+            src: url('files/font/SBL.ttf') format(truetype);
+        }
+
+        a {
+            color: rgb(255, 255, 255);
+            cursor: pointer;
+        }
+
+        body {
+            min-height: 100vh;
+            margin: 0;
+            background-color: black;
+            color: white;
+            text-align: center;
+            font-family: "SB", sans-serif;
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+    <link rel="icon" type="image/png" href="files/logo.png">
+</head>
+
+<body style="opacity: 1; transition: opacity 0.5s ease;">
+
+    <div style="display: block; text-align: center; opacity: 0; max-height: 0px; overflow: hidden; transition: opacity 1s ease, max-height 1s ease;"
+        id="logo">
+        <img src="files/logo_padding.png" style="width: 270px; height: auto;">
+    </div>
+
+    <div style="display: flex; width: 100%; min-height: 100vh; align-items: center; justify-content: center; transition: opacity 1s ease, min-height 1s ease; flex-direction: column; margin-bottom: 0; opacity: 0;"
+        id="title">
+        <h1 style="display: flex; text-align: center; font-family: SB; margin-bottom: 0;"> ACOPS
+            <a style="display: none; max-width: 0px; overflow: hidden; opacity: 1; transition: opacity 0.5s ease, max-width 0.3s ease, color 0.5s ease; flex-direction: column; color: rgb(255, 255, 255);"
+                id="kr">.KR</a>
+        </h1>
+    </div>
+    <p style="margin-top: 0; display: none; opacity: 0; transition: opacity 0.5s ease;" id="proto">인덱스</p>
+
+    <div style="display: none; opacity: 0; max-height: 0; overflow: hidden; transition: opacity 1s ease, max-height 1s ease;"
+        id="main-dn">
+        
+        <!-- 내용 -->
+         <p>#94 번째 배포 기준</p>
+        <div class="directory-container">
+    <ul class="tree">
+        <li>ACOPS.KR
+            <ul>
+                <li>files
+                    <ul>
+                        <li>폴더
+                            <ul>
+                                <li><a href="">파일</a></li>
+                                <li><a href="">파일</a></li>
+                                <li><a href="">파일</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="files/logo.png">logo.png</a></li>
+                        <li><a href="files/logo_padding.png">logo_padding.png</a></li>
+                    </ul>
+                </li>
+                <li><a href="acops.html">acops.html</a></li>
+                <li><a href="contact.html">contact.html</a></li>
+                <li><a href="files.html">files.html</a></li>
+                <li><a href="index.html">index.html</a></li>
+                <li><a href="index.png">index.png</a></li>
+                <li><a href="README.md">README.md</a></li>
+                <li><a href="settings.html">settings.html</a></li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+<style>
+/* 왼쪽 정렬 및 기본 여백 설정 */
+.directory-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.tree {
+    text-align: left;
+    list-style: none; /* 기본 점(bullet) 없애기 */
+    padding-left: 0;
+}
+/* 하위 폴더로 갈 때마다 자동으로 들여쓰기 */
+.tree ul {
+    list-style: none;
+    padding-left: 20px; 
+}
+/* 'ㄴ' 기호 자동으로 붙이기 (선택 사항, 필요 없으면 삭제 가능) */
+.tree ul li::before {
+    content: "ㄴ ";
+}
+</style>
+<br><br>
+        <!-- 하단 바 -->
+        <div style="display: flex; position: fixed; width: 100%; bottom: 0; left: 0; justify-content: center; flex-direction: column; background-color: black; transition: max-height 0.5s ease; max-height: 50px; overflow: hidden;"
+            id="dbar"">
+                <hr style=" width: 100%;">
+            <p style="margin-top: 0;"><a onclick="goto('index.html')" style="text-decoration: underline;">홈페이지</p>
+        </div>
+    </div>
+
+    <script>
+    localStorage.setItem("downanimation", 0);
+
+    initACOPS();
+
+    function initACOPS() {
+        const acopsStatus = localStorage.getItem("acops");
+        const titleElement = document.getElementById("title");
+        const krElement = document.getElementById("kr");
+        const bodyElement = document.body;
+
+        krElement.style.color = "yellow";
+        krElement.style.display = "block";
+        krElement.style.maxWidth = "100px";
+
+        if (acopsStatus === "backto") {
+            bodyElement.style.transition = "none";
+            titleElement.style.transition = "none";
+            krElement.style.transition = "none";
+
+            bodyElement.style.opacity = "1";
+            titleElement.style.opacity = "1";
+            krElement.style.opacity = "1";
+
+            setTimeout(() => {
+                bodyElement.style.transition = "opacity 0.5s ease";
+                titleElement.style.transition = "opacity 1s ease, min-height 1s ease";
+                krElement.style.transition = "opacity 0.5s ease, max-width 0.3s ease, color 0.5s ease";
+            }, 50);
+        } else {
+            titleElement.style.transition = "opacity 2s ease, min-height 1s ease";
+            setTimeout(() => {
+                krElement.style.opacity = "1";
+                titleElement.style.opacity = "1";
+            }, 50);
+        }
+    }
+
+    window.addEventListener('load', function() {
+        setTimeout(() => {
+            document.getElementById("title").style.minHeight = "0vh";
+
+            document.getElementById("logo").style.display = "block";
+            const dummy1 = document.getElementById("logo").offsetHeight;
+            document.getElementById("main-dn").style.display = "block";
+            const dummy2 = document.getElementById("main-dn").offsetHeight;
+            document.getElementById("proto").style.display = "block";
+
+            setTimeout(() => {
+                document.getElementById("logo").style.maxHeight = "270px";
+                document.getElementById("proto").style.opacity = "1";
+                document.getElementById("kr").style.color = "white";
+                
+                setTimeout(() => {
+                    document.getElementById("main-dn").style.maxHeight = "1000px";
+                    
+                    setTimeout(() => {
+                        document.getElementById("logo").style.opacity = "1";
+                        document.getElementById("main-dn").style.opacity = "1";
+                    }, 500)
+                }, 500)
+
+            }, 50);
+
+        }, 1000);
+    });
+
+    function me() {
+        document.getElementById("mediv").style.display = "block";
+        document.getElementById("mediv").offsetHeight;
+        document.getElementById("mebtn").style.opacity = "0";
+        document.getElementById("mebtn").style.maxHeight = "0px";
+
+        setTimeout(() => {
+            document.getElementById("mebtn").style.display = "none";
+            document.getElementById("mediv").style.maxHeight = "500px";
+            document.getElementById("mediv").style.opacity = "1";
+        }, 500);
+    }
+
+    function out() {
+        document.body.style.opacity = "0";
+    }
+
+    function come() {
+        document.body.style.opacity = "1";
+    }
+
+    function ignore() {
+        localStorage.setItem("ignore", "true");
+        out()
+        setTimeout(() => {
+            location.reload()
+        }, 600);
+    }
+
+    function deb_reset_ignore() {
+        localStorage.setItem("ignore", "false");
+    }
+
+    function goto(url) {
+        out();
+        setTimeout(() => {
+            window.location.href = url;
+            localStorage.setItem("redir", "1");
+        }, 600);
+    }
+
+    // 이 부분은 AI의 도움을 받았어요 (수정된 버전)
+
+    let yellowlink_value = 0;
+
+    function applyLinkColor() {
+        const atag = document.querySelectorAll("a:not(#kr)"); 
+        setTimeout(() => {
+            if (localStorage.getItem("yellowlink") === "true") {
+                atag.forEach(a => {
+                    a.style.color = "yellow";
+                });
+                yellowlink_value = 1;
+            } else {
+                atag.forEach(a => {
+                    a.style.color = "white";
+                });
+                yellowlink_value = 0;
+            }
+        }, );
+    }
+
+    applyLinkColor();
+
+    function yellowlink() {
+        if (localStorage.getItem("yellowlink") === "true") {
+            localStorage.setItem("yellowlink", "false");
+        } else {
+            localStorage.setItem("yellowlink", "true");
+        }
+        applyLinkColor();
+    }
+    // 여기까지
+</script>
+</body>
+
+</html>
