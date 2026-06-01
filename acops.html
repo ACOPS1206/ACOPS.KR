@@ -67,7 +67,6 @@
     initACOPS();
 
     function initACOPS() {
-        wait = 0;
         const acopsStatus = localStorage.getItem("acops");
         const titleElement = document.getElementById("title");
         const krElement = document.getElementById("kr");
@@ -89,6 +88,7 @@
                 bodyElement.style.transition = "opacity 0.5s ease";
                 titleElement.style.transition = "opacity 1s ease, min-height 1s ease";
                 krElement.style.transition = "opacity 0.5s ease, max-width 0.5s ease, color 0.5s ease";
+                wait = 0;
             }, 50);
             
         } else {
