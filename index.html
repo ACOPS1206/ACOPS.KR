@@ -58,7 +58,7 @@
         <br>
         <!-- 내용 -->
         <p>
-            <a onclick="goto('settings.html')" style="text-decoration: underline;">
+            <a onclick="settings()" style="text-decoration: underline;">
                 사이트 설정
             </a>
         </p>
@@ -81,8 +81,25 @@
         </div>
         <div
             style="display: flex; position: fixed; width: 100%; bottom: 0; left: 0; justify-content: center; flex-direction: column; background-color: black;">
-            <div style="transition: max-height 0.5s ease; max-height: 80px; overflow: hidden;" id="dbar">
+            <div style="transition: max-height 0.5s ease; max-height: 180px; overflow: hidden;" id="dbar">
                 <hr style="width: 100%;">
+                <div style="margin-top: 0; margin-bottom: 0; max-height: 0px; transition: margin-bottom 0.5s ease, max-height 0.5s ease, opacity 0.5s ease; opacity: 0;" id="settings">
+                    <div style="margin: 0; margin-bottom: 0px; transition: margin-bottom 0.5s ease;" id="settingscont">
+                        <p style="width: 100%; text-align: right; margin: 0;">
+                        <a onclick="settingsexit()">
+                            [종료]
+                        </a>
+                         &nbsp &nbsp
+                    </p>
+                    <p style="width: 100%;">
+                        ACOPS.KR 의 <a style="text-decoration: underline;">#{{DEPLOY_COUNT}}</a> 번째 배포판<br>'새로운 시작' 이후 개발 <a style="text-decoration: underline;">3</a>일차
+                    </p>
+                    <p style="width: 100%;">
+                        <a style="text-decoration: underline;" onclick="yellowlink()">링크 색상 바꾸기</a><br><a onclick="goto('settings.html')" style="text-decoration: underline;">상세 설정</a>
+                    </p>
+                    </div>
+                    <hr style="width: 100%;">
+                </div>
                 <p style="margin-top: 0;" id="dbartxt"><a onclick="goto('contact.html')" style="text-decoration: underline;">연락처
                         정보</a> |
                     <a style="font-size: 20px; text-decoration: underline;" onclick="acops()">에이콥스</a> | <a
@@ -96,6 +113,7 @@
     </div>
 
     <script>
+        
     if (localStorage.getItem("downanimation") === null) {
         localStorage.setItem("downanimation", "0");
     }
@@ -176,7 +194,7 @@
                                 document.getElementById("main-dn").style.opacity = "1";
                                 localStorage.setItem("ignore", "false");
                                 localStorage.setItem("acops", "none");
-                                document.getElementById("dbar").style.maxHeight = "80px";
+                                document.getElementById("dbar").style.maxHeight = "320px";
                             }, 500)
                         }, 500)
 
@@ -243,31 +261,59 @@
         }, 1000);
     }
 
-    let yellowlink_value = 0;
+    // 이 부분은 AI의 도움을 받았어요 (수정된 버전)
 
-    function applyLinkColor() {
-        const atag = document.querySelectorAll("a:not(#kr)");
-        setTimeout(() => {
-            const isYellow = localStorage.getItem("yellowlink") === "true";
-            atag.forEach(a => {
-                if (a.closest("#mediv")) return;
-                if (isYellow) { a.style.color = "yellow"; } 
-                else { a.style.color = "white"; }
-            });
-            yellowlink_value = isYellow ? 1 : 0;
-        });
-    }
+        let yellowlink_value = 0;
 
-    applyLinkColor();
-
-    function yellowlink() {
-        if (localStorage.getItem("yellowlink") === "true") {
-            localStorage.setItem("yellowlink", "false");
-        } else {
-            localStorage.setItem("yellowlink", "true");
+        function applyLinkColor() {
+            const atag = document.querySelectorAll("a:not(#kr)"); 
+            setTimeout(() => {
+                if (localStorage.getItem("yellowlink") === "true") {
+                    atag.forEach(a => {
+                        a.style.color = "yellow";
+                    });
+                    yellowlink_value = 1;
+                } else {
+                    atag.forEach(a => {
+                        a.style.color = "white";
+                    });
+                    yellowlink_value = 0;
+                }
+            }, );
         }
+
         applyLinkColor();
-    }
+
+        function yellowlink() {
+            out();
+            setTimeout(() => {
+                if (localStorage.getItem("yellowlink") === "true") {
+                    localStorage.setItem("yellowlink", "false");
+                } else {
+                    localStorage.setItem("yellowlink", "true");
+                }
+                applyLinkColor();
+                come();
+            }, 1000);
+        }
+        // 여기까지
+        
+        function settings(){
+            document.getElementById("settingscont").style.marginBottom = "30px";
+            document.getElementById("settings").style.maxHeight = "250px";
+            setTimeout(() => {
+                document.getElementById("settings").style.opacity = "1";
+            }, 500);
+        }
+
+        function settingsexit(){
+            document.getElementById("settings").style.opacity = "0";
+            setTimeout(() => {
+                
+                document.getElementById("settingscont").style.marginBottom = "0px";
+            document.getElementById("settings").style.maxHeight = "0px";
+            }, 500);
+        }
 </script>
 
 </body>
