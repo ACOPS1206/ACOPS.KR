@@ -36,6 +36,7 @@ jobs:
       - name: Inject Deployment Version
         run: |
           sed -i "s/#{{DEPLOY_COUNT}}/#${{ github.run_number }}/g" index.html
+          sed -i "s/#{{DEPLOY_COUNT}}/#${{ github.run_number }}/g" settings.html
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
