@@ -31,13 +31,21 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      # 👇 소수점 앞의 메인 번호만 자동으로 바꿉니다. (. 뒤는 HTML에 적어두신 대로 유지됨)
+      - name: Inject Deployment Version
+        run: |
+          sed -i "s/#{{DEPLOY_COUNT}}/#${{ github.run_number }}/g" index.html
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           # Upload entire repository
           path: '.'
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
