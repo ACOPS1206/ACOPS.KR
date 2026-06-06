@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="petpet generator">
+  <meta name="theme-color" content="#ffeaa8">
+  <meta property="og:title" content="petpet">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://benisland.neocities.org/petpet/">
+  <meta property="og:image" itemprop="image" content="https://benisland.neocities.org/petpet/img/pet.gif">
+  <meta property="og:description" itemprop="description" content="petpet gif generator">
+  <title>petpet</title>
+  <link rel="icon" href="../favicon.ico">
+  <link rel="stylesheet" href="./style.css">
+  <script>/* change theme */ let theme = localStorage.getItem("theme"); theme || (theme = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"), document.documentElement.setAttribute("data-theme", theme), document.addEventListener("DOMContentLoaded", () => { Math.random() < .5 && (document.getElementById("fg").href = atob("aHR0cHM6Ly90d2l0dGVyLmNvbS9zdHZwdmQ=")); const e = document.getElementById("color-theme"); e.checked = "dark" == theme, e.addEventListener("change", t => { theme = e.checked ? "dark" : "light", document.documentElement.setAttribute("data-theme", theme), localStorage.setItem("theme", theme) }) });</script>
+</head>
+
+<body>
+  <main class="parent">
+    <div class="container">
+      <header class="header">
+        <h1>petpet generator v1 <input type="checkbox" id="color-theme" title="toggle theme"></h1>
+        <p><b>If this crashes your browser it is NOT my fault</b></p>
+        <p><a href="../">try v2, it has more features :)</a></p>
+      </header>
+      <section class="preview">
+        <h4>preview</h4>
+        <div class="row adjust">
+          <canvas id="canvas" width="112" height="112" tabindex="1"></canvas>
+          <div class="controls">
+            <button title="Previous frame" id="prev">⏮</button>
+            <button title="Play/pause" id="play">⏸</button>
+            <button title="Next frame" id="next">⏭</button>
+          </div>
+          <div class="scale-control">
+          </div>
+        </div>
+        <div class="row">
+          <p>Click the preview and use arrow keys to adjust position<br><span style="opacity:0.5">(sorry if ur on phone
+              <a class="e" href="https://i.imgur.com/q0NE5rh.jpg" target="_blank">lol</a>)</span></p>
+        </div>
+        <div class="row control-row">
+          <label for=scale>Scale</label>
+          <input class="scale-control" title="Scale" type="range" id="scale" step="1" min="1" max="200" value="85">
+        </div>
+        <div class="row control-row">
+          <label for="fps">FPS</label>
+          <input type="number" id="fps" step="2" min="2" max="60" value="16">
+        </div>
+        <div class="row control-row">
+          <button id="export">Export to GIF</button>
+        </div>
+      </section>
+      <section class="upload">
+        <h4>upload an image</h4>
+        <div class="row upload-preview" id="drop-area">
+          <img id="uploadPreview">
+          <div class="upload-error hint" id="uploadError"></div>
+        </div>
+        <div class="row">
+          <div class="form-row">
+            <input type="file" id="uploadFile" accept="image/*">
+          </div>
+          <!-- <div class="form-row" style="display:none">
+            <input type="url" disabled placeholder="Upload with URL" id="uploadUrl">
+            <button disabled id="uploadUrlBtn">upload</button>
+          </div> -->
+        </div>
+        <p>Note: GIFs will not be animated in the output</p>
+      </section>
+      <section class="output">
+        <h4>output</h4>
+        <div class="upload-preview">
+          <div class="hint" id="info">...</div>
+          <div class="">
+            <img src="" alt="" id="result">
+          </div>
+        </div>
+        <p>
+          <a href='https://i.imgur.com/hPUOCb1.jpg' target="_blank" class="e">ps:</a> save the exported gif if you want
+          to share it, using the link won't work cus it only exists in your browser </p>
+      </section>
+      <footer class="footer">
+        <p>gifs are generated using <a href="https://github.com/jnordberg/gif.js" target="_blank">gif.js</a></p>
+        <p>
+          <a class="e fingies" id="fg" title="😳" target="_blank"><span class="fl">👉</span><span>👈</span></a>
+        </p>
+      </footer>
+    </div>
+  </main>
+  <script src="../requestInterval.js"></script>
+  <script src="../gif.js"></script>
+  <script src="./index.js"></script>
+
+</html>
