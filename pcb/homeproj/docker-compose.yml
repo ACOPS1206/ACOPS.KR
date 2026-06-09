@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  static-web:
+    image: 'nginx:alpine'
+    container_name: static-web
+    restart: unless-stopped
+    ports:
+      # 호스트(Arch Linux)의 127.0.0.1:8080을 컨테이너의 80으로 연결
+      # 외부(공인 IP)에서는 8080으로 절대 직접 접속할 수 없습니다.
+      - '127.0.0.1:8080:80' 
+    volumes:
+      - ./www:/usr/share/nginx/html:ro
